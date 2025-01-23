@@ -46,3 +46,11 @@ Open Terminal app
 >> pip install keyring
 >> keyring set jira <your jira username>
 ```
+
+Run the application. It will start dash-server
+
+```
+>> python app.py
+```
+
+Open TimeSheets web-page - URL - http://127.0.0.1:8050
