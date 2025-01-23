@@ -5,6 +5,8 @@ You can add/modify your worklogs in several jira instances right in the table fo
 
 ![Image alt](https://github.com/mixaxa85/jira-timesheets/blob/main/JiraTS.png)
 
+Note: at the moment, the toolkit tested only on MacOS
+
 ## Installation
 
 Create configuration file **assets/var.json** with following format
