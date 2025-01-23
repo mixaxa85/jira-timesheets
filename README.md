@@ -1,15 +1,38 @@
 # Jira Timesheets
-The easiest way to manage your daily worklogs
+The easiest way to manage your daily worklogs.
 
-You can add/modify your worklogs in several jira instances right in the table form - like in Excel table:
+You can add/modify your worklogs in several jira instances right in the table form - like in Excel
+
+## Features
+
+Jira Timesheets selects jira issues by the following two JQLs via jira API, and represents the resulting data in the web-form:
+
+```
+1. (worklogAuthor = currentuser() AND worklogDate >= startOfMonth(0) AND worklogDate <= endOfMonth(0))
+2. filter = worklogs
+```
 
 ![Image alt](https://github.com/mixaxa85/jira-timesheets/blob/main/JiraTS.png)
 
-Note: at the moment, the toolkit tested only on MacOS
+Now you can add new worklog or update an existing one by just a double-click in a table cell. The application automatically registers/updates a worklog once the new value has been set.
+
+You can optionally (see instructions below):
+
+ - configure interaction with two separate jira instances - by setting **jira_url_2** in configuration file,
+
+ - set filters list (e.g. "Support tickets" / "Development") - to filter the list based on jira projects with specified keys.
+
+**Refresh** button - just reads all the actual data from jira (in case you have updated something in jira and want to refresh the dataform).
+
+**Note**: the application was tested with Jira Server and MacOS only
+
 
 ## Installation
 
-Create configuration file **assets/var.json** with following format
+### Jira
+By default, the application will read your worklogs registered in current month. You can additionally create a JQL filter with name **worklogs** (hardcoded) - with tickets that you want to be shown in addition.
+
+### Create configuration file **assets/var.json** with following format
 
 ```
 {
@@ -39,7 +62,9 @@ For example:
 }
 ```
 
-Set your jira credentials:
+### Set your jira credentials in keyring:
+
+It will store your password securily in macOS Keychain / Windows Credential Locker - see https://pypi.org/project/keyring/
 
 ```
 Open Terminal app
@@ -47,10 +72,14 @@ Open Terminal app
 >> keyring set jira <your jira username>
 ```
 
-Run the application. It will start dash-server
+### Run the application
+
+It will start dash-server
 
 ```
 >> python app.py
 ```
 
-Open TimeSheets web-page - URL - http://127.0.0.1:8050
+### Open TimeSheets web-page
+
+URL - http://127.0.0.1:8050
