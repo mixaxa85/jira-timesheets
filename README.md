@@ -16,6 +16,8 @@ Jira Timesheets selects jira issues by the following two JQLs via jira API, and 
 
 Now you can add new worklog or update an existing one by just a double-click in a table cell. The application automatically registers/updates a worklog once the new value has been set.
 
+You can set spent time either in hours in **decimals** (1.5) or in jira-like format (e.g. **1h 45m**).
+
 You can optionally (see instructions below):
 
  - configure interaction with two separate jira instances - by setting **jira_url_2** in configuration file,
